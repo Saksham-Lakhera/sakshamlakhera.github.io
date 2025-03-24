@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Saksham Lakhera | Experience</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .experience-timeline {
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px 0;
+    }
+    
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background-color: var(--accent-primary);
+      top: 0;
+      bottom: 0;
+      left: 50px;
+      margin-left: -1px;
+    }
+    
+    .experience-cards {
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px 0;
+    }
+    
+    .experience-card {
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow), 0 5px 15px rgba(var(--accent-primary-rgb), 0.1);
+      border-left: 3px solid var(--accent-primary);
+    }
+    
+    .experience-card-header {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .experience-card-header:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.05);
+    }
+    
+    .experience-header-content {
+      flex: 1;
+    }
+    
+    .experience-period {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+    
+    .experience-position {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 5px 0;
+      color: var(--accent-primary);
+    }
+    
+    .experience-company {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .card-toggle {
+      margin-left: 15px;
+      color: var(--accent-primary);
+      transition: transform 0.3s ease;
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .card-toggle-active {
+      transform: rotate(180deg);
+    }
+    
+    .experience-card-body {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+    
+    .experience-card-body.active {
+      padding: 20px;
+      max-height: 1000px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .experience-item {
+      padding: 30px 40px 30px 80px;
+      position: relative;
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 40px;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: -12px;
+      background-color: var(--accent-primary);
+      border: 4px solid var(--bg-primary);
+      top: 30px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .experience-description {
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    .experience-details ul {
+      padding-left: 20px;
+    }
+    
+    .experience-details li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+    
+    .experience-tag {
+      display: inline-block;
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      color: var(--accent-primary);
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .experience-tag:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.2);
+    }
+    
+    .skills-section {
+      margin-top: var(--spacing-xl);
+    }
+    
+    .skill-category {
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .skill-category h3 {
+      margin-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 5px;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+    }
+    
+    .skill-item {
+      background-color: var(--bg-secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .education-section {
+      margin-top: var(--spacing-xl);
+    }
+    
+    .education-item {
+      margin-bottom: var(--spacing-lg);
+      background-color: var(--bg-secondary);
+      padding: var(--spacing-md);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .education-item h3 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+    
+    .education-item p {
+      margin-bottom: 5px;
+    }
+    
+    .education-period {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .experience-timeline::before {
+        left: 31px;
+      }
+      
+      .experience-item {
+        padding-left: 60px;
+      }
+      
+      .experience-item::before {
+        left: 20px;
+      }
+      
+      .experience-card-header {
+        padding: 15px;
+      }
+      
+      .experience-position {
+        font-size: 1.2rem;
+      }
+      
+      .experience-company {
+        font-size: 1rem;
+      }
+      
+      .experience-card-body.active {
+        padding: 15px;
+      }
+      
+      .experience-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      
+      .experience-tag {
+        margin-bottom: 0;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+      }
+      
+      .card-toggle {
+        width: 25px;
+        height: 25px;
+        min-width: 25px;
+      }
+      
+      .experience-card {
+        margin-bottom: 15px;
+      }
+      
+      .experience-details ul {
+        padding-left: 15px;
+      }
+      
+      .experience-details li {
+        margin-bottom: 8px;
+      }
+    }
+    
+    /* Additional mobile tweaks for smaller screens */
+    @media (max-width: 480px) {
+      .experience-position {
+        font-size: 1.1rem;
+      }
+      
+      .experience-company {
+        font-size: 0.9rem;
+      }
+      
+      .experience-card-header {
+        padding: 12px;
+      }
+      
+      .experience-card-body.active {
+        padding: 12px;
+      }
+      
+      .experience-period {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">Saksham Lakhera</a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experience.html" class="active">Experience</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Experience Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Professional Experience</h1>
+        <p>My journey in software development and engineering</p>
+      </div>
+      
+      <!-- Search bar for experience section -->
+      <div class="search-container" style="margin-bottom: 30px;">
+        <div class="search-input-wrapper">
+          <input type="text" id="experience-search" placeholder="Search by skill or technology (e.g., Kubernetes, Java)" class="search-input">
+          <button id="search-clear" class="search-clear" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="experience-cards">
+        <div class="experience-card animate-fade-in">
+          <div class="experience-card-header" data-toggle="collapse" data-target="experience-1">
+            <div class="experience-header-content">
+              <div class="experience-period">Nov 2022 – Jul 2024</div>
+              <h2 class="experience-position">Software Engineer II</h2>
+              <h3 class="experience-company">Akamai Technologies — DDoS mitigation, Network Security</h3>
+            </div>
+            <div class="card-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="experience-card-body" id="experience-1">
+            <p class="experience-description">Hired by Akamai Technologies, a global leader in API security, to develop features that prevent bot traffic on APIs.</p>
+            
+            <div class="experience-details">
+              <ul>
+                <li>Revamped "Crypto Challenge", a bot deterrence feature from a Django server to edge servers in C, restructured the framework for distributed handling, reduced server hops, doubling verification speed, and boosting customer adoption from 107 to 243.</li>
+                <li>Engineered "Adaptive Challenge," a stateless bot detection feature using JavaScript, Java, AngularJS and Akamai Metadata, integrated into 27 customer solutions and serving millions of users daily. (Patent filed for version 2)</li>
+                <li>Engineered the "Hype Event" feature using AngularJS, Java, Akamai metadata and Python, optimizing stability during peak loads with cookie-based state management for bot detection, reducing server load by 70 million requests/day.</li>
+                <li>Optimized memory usage per request by 14% (42KB to 36KB) by automating config delivery via Jenkins, analyzing execution logs in Amazon S3 with Python to track unused variables, and visualizing cleanup points using Grafana.</li>
+                <li>Developed and deployed Flask-based REST APIs on a Kubernetes cluster to monitor release impacts across 365,000 servers, integrating MySQL, OpenSSL, SSL/TLS, RBAC and multi-source data integration for real-time alerts, reducing release rollback time by 75%.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-tags">
+              <span class="experience-tag">C</span>
+              <span class="experience-tag">JavaScript</span>
+              <span class="experience-tag">Java</span>
+              <span class="experience-tag">AngularJS</span>
+              <span class="experience-tag">Python</span>
+              <span class="experience-tag">Jenkins</span>
+              <span class="experience-tag">Amazon S3</span>
+              <span class="experience-tag">Grafana</span>
+              <span class="experience-tag">Flask</span>
+              <span class="experience-tag">Kubernetes</span>
+              <span class="experience-tag">MySQL</span>
+              <span class="experience-tag">OpenSSL</span>
+              <span class="experience-tag">SSL/TLS</span>
+              <span class="experience-tag">RBAC</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-card animate-fade-in">
+          <div class="experience-card-header" data-toggle="collapse" data-target="experience-2">
+            <div class="experience-header-content">
+              <div class="experience-period">Aug 2020 – Oct 2022</div>
+              <h2 class="experience-position">Software Engineer</h2>
+              <h3 class="experience-company">Akamai Technologies — Anomaly detection, Big data Analysis</h3>
+            </div>
+            <div class="card-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="experience-card-body" id="experience-2">
+            <p class="experience-description">Hired to build platforms for integrating log data and providing actionable insights to customers.</p>
+            
+            <div class="experience-details">
+              <ul>
+                <li>Deployed and managed a 70-node distributed database cluster on Azure for SLA tracking. Automated cluster provisioning, pipeline creation, database setup, and key management with Terraform, reducing manual effort by 95%.</li>
+                <li>Built data pipelines, optimized schemas, and created efficient views, automated ETL operations via Airflow and employed advanced SQL techniques resulting in a 30% improvement in BI system performance.</li>
+                <li>Implemented cluster monitoring with Prometheus and Grafana, tracking key metrics and triggering alerts.</li>
+                <li>Developed a secure Python-based application interface (Open API standards) over a Spark data warehouse, enabling advanced queries with ORM, incorporated OAuth 2.0 and JWT for secure user authentication and authorization.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-tags">
+              <span class="experience-tag">Azure</span>
+              <span class="experience-tag">Terraform</span>
+              <span class="experience-tag">Python</span>
+              <span class="experience-tag">SQL</span>
+              <span class="experience-tag">ETL</span>
+              <span class="experience-tag">Airflow</span>
+              <span class="experience-tag">Prometheus</span>
+              <span class="experience-tag">Grafana</span>
+              <span class="experience-tag">Spark</span>
+              <span class="experience-tag">ORM</span>
+              <span class="experience-tag">OAuth 2.0</span>
+              <span class="experience-tag">JWT</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-card animate-fade-in">
+          <div class="experience-card-header" data-toggle="collapse" data-target="experience-3">
+            <div class="experience-header-content">
+              <div class="experience-period">Jul 2018 – May 2020</div>
+              <h2 class="experience-position">Software Engineer Intern</h2>
+              <h3 class="experience-company">CISCO — Network and Data Analytics</h3>
+            </div>
+            <div class="card-toggle">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="experience-card-body" id="experience-3">
+            <p class="experience-description">Worked on developing network analytics tools and data processing pipelines.</p>
+            
+            <div class="experience-details">
+              <ul>
+                <li>Contributed to the development of dashboards for network traffic analysis using D3.js and Angular, improving visibility into network patterns and potential security threats.</li>
+                <li>Assisted in building data processing pipelines using Python and Apache Kafka for real-time network traffic analysis.</li>
+                <li>Helped optimize database queries, resulting in a 25% improvement in dashboard load times.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-tags">
+              <span class="experience-tag">D3.js</span>
+              <span class="experience-tag">Angular</span>
+              <span class="experience-tag">Python</span>
+              <span class="experience-tag">Apache Kafka</span>
+              <span class="experience-tag">SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Skills Section -->
+      <div class="skills-section">
+        <div class="section-header">
+          <h2>Skills & Expertise</h2>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <div class="skill-list">
+            <div class="skill-item">C</div>
+            <div class="skill-item">C++</div>
+            <div class="skill-item">Java</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">SQL</div>
+            <div class="skill-item">Bash</div>
+            <div class="skill-item">Lua</div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Frameworks & Technologies</h3>
+          <div class="skill-list">
+            <div class="skill-item">RESTful APIs</div>
+            <div class="skill-item">Flask</div>
+            <div class="skill-item">Angular</div>
+            <div class="skill-item">TensorFlow</div>
+            <div class="skill-item">Docker</div>
+            <div class="skill-item">Kubernetes</div>
+            <div class="skill-item">OpenSSL</div>
+            <div class="skill-item">Terraform</div>
+            <div class="skill-item">Jenkins</div>
+            <div class="skill-item">Airflow</div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Cloud & Infrastructure</h3>
+          <div class="skill-list">
+            <div class="skill-item">Azure</div>
+            <div class="skill-item">AWS</div>
+            <div class="skill-item">Google Cloud</div>
+            <div class="skill-item">Prometheus</div>
+            <div class="skill-item">Grafana</div>
+            <div class="skill-item">CI/CD</div>
+            <div class="skill-item">Distributed Systems</div>
+            <div class="skill-item">Microservices</div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Security</h3>
+          <div class="skill-list">
+            <div class="skill-item">Bot Detection</div>
+            <div class="skill-item">Cryptography</div>
+            <div class="skill-item">OAuth 2.0</div>
+            <div class="skill-item">JWT</div>
+            <div class="skill-item">SSL/TLS</div>
+            <div class="skill-item">RBAC</div>
+            <div class="skill-item">DDoS Mitigation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Education Section -->
+      <div class="education-section">
+        <div class="section-header">
+          <h2>Education</h2>
+        </div>
+        
+        <div class="education-item animate-fade-in">
+          <h3>Bachelor of Engineering in Computer Science</h3>
+          <p>R.V. College of Engineering, Bangalore</p>
+          <p>GPA: 9.1/10.0</p>
+          <div class="education-period">2016 - 2020</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Saksham Lakhera. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/sakshama" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/sakshamlakhera" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/sakshamlakhera" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html> 

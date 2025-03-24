@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Saksham Lakhera | Projects</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Search functionality styles */
+    .search-container {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    
+    .search-input-wrapper {
+      position: relative;
+      flex: 1;
+    }
+    
+    .search-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 40px 0 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+    
+    .search-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .search-button, .clear-all-button {
+      height: 44px;
+      border: none;
+      border-radius: 6px;
+      padding: 0 15px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .search-button {
+      height: 44px;
+      min-width: 100px;
+      background-color: var(--accent-primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0 16px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background-color: var(--accent-secondary);
+    }
+    
+    .clear-all-button {
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      color: var(--accent-primary);
+    }
+    
+    .clear-all-button:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.2);
+    }
+    
+    .search-button i, .clear-all-button i {
+      font-size: 0.875rem;
+    }
+    
+    .search-clear {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: none;
+      font-size: 0.875rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    .search-clear:hover {
+      background-color: rgba(var(--text-secondary-rgb), 0.1);
+    }
+    
+    .skill-recommendations {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 0 0 6px 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    
+    .skill-recommendation-item {
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .skill-recommendation-item:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+    }
+    
+    /* Make sure project cards have relative positioning for absolute elements */
+    .project-card {
+      position: relative;
+    }
+    
+    .skill-match-indicator {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--accent-primary);
+      color: white;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+    .skill-match-indicator::before {
+      content: '✓';
+      margin-right: 4px;
+      font-weight: bold;
+    }
+    
+    /* Suggested skills */
+    .suggested-skills {
+      margin: 10px 0 20px 0;
+    }
+    
+    .suggested-skills-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-right: 10px;
+    }
+    
+    .skills-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      position: relative;
+      padding-bottom: 8px;
+    }
+    
+    .skills-section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-primary);
+      border-radius: 2px;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      color: var(--accent-primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid rgba(var(--accent-primary-rgb), 0.15);
+    }
+    
+    .skill-tag i {
+      margin-right: 6px;
+      font-size: 0.9rem;
+    }
+    
+    .skill-tag:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .skill-tag:active {
+      transform: translateY(0);
+    }
+    
+    .filter-container {
+      margin-bottom: 30px;
+    }
+    
+    .filter-label {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .search-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .search-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      
+      .search-button, .clear-all-button {
+        height: 45px;
+        justify-content: center;
+      }
+      
+      .filter-options {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        scrollbar-width: thin;
+      }
+      
+      .filter-btn {
+        white-space: nowrap;
+      }
+    }
+    
+    /* No results message */
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      margin: 20px 0;
+      color: var(--text-secondary);
+    }
+    
+    .no-results p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    
+    .no-results .btn {
+      background-color: var(--accent-primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .no-results .btn:hover {
+      background-color: var(--accent-secondary);
+    }
+    
+    /* No results message styling */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(var(--light-color-rgb), 0.05);
+      border-radius: 10px;
+      margin: 2rem 0;
+    }
+    
+    .no-results p {
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Skill suggestions dropdown */
+    .skill-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--dark-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 0 0 8px 8px;
+      z-index: 100;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .skill-suggestion-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .skill-suggestion-item:hover {
+      background-color: var(--accent-color);
+      color: var(--light-color);
+    }
+    
+    /* Skill tags styling */
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--accent-color);
+      color: var(--light-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .skill-tag .remove-skill {
+      background: none;
+      border: none;
+      color: var(--light-color);
+      cursor: pointer;
+      margin-left: 6px;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    
+    .skill-tag .remove-skill:hover {
+      opacity: 1;
+    }
+    
+    .selected-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 6px 6px 0 0;
+      min-height: 20px;
+      border: 1px solid var(--border-color);
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    /* Only show border when there are selected skills */
+    .selected-skills:empty {
+      display: none;
+    }
+    
+    /* Style for input when skills are selected */
+    .has-selected-skills .search-input {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">Saksham Lakhera</a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="container">
+      <div class="section-header">
+        <h1>My Projects</h1>
+        <p>Explore my latest work presented as products with detailed specifications and features.</p>
+      </div>
+      
+      <!-- Filter options -->
+      <div class="filter-container">
+        <div class="search-container" id="search-container">
+          <div class="search-input-wrapper" id="search-input-wrapper">
+            <div class="selected-skills" id="selected-skills"></div>
+            <input type="text" id="search-input" placeholder="Search by skills (e.g., JavaScript, React)" class="search-input">
+            <button id="search-clear" class="search-clear">
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="skill-recommendations" id="skill-recommendations"></div>
+          </div>
+          <button id="search-button" class="search-button">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+        
+        <div class="suggested-skills">
+          <h3 class="skills-section-title">Popular Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-tag"><i class="fab fa-react"></i> React</span>
+            <span class="skill-tag"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+            <span class="skill-tag"><i class="fas fa-brain"></i> TensorFlow</span>
+            <span class="skill-tag"><i class="fas fa-fire"></i> PyTorch</span>
+            <span class="skill-tag"><i class="fas fa-code"></i> C</span>
+            <span class="skill-tag"><i class="fas fa-lock"></i> Cryptography</span>
+            <span class="skill-tag"><i class="fab fa-microsoft"></i> Azure</span>
+            <span class="skill-tag"><i class="fas fa-robot"></i> Reinforcement Learning</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Projects grid -->
+      <div id="projects-grid" class="projects-grid">
+        <!-- Projects will be loaded dynamically via JavaScript -->
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <p>Loading amazing projects...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <!-- Project details will be loaded here -->
+    </div>
+    <button id="modal-close" class="modal-close" aria-label="Close modal">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Saksham Lakhera. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/sakshama" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/sakshamlakhera" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/sakshamlakhera" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <!-- Three.js library - Loaded before our custom scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/three-setup.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/project-search.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load projects
+      const projectsGrid = document.getElementById('projects-grid');
+      
+      // Add loading indicator first
+      if (projectsGrid) {
+        projectsGrid.innerHTML = '<div class="loading">Loading projects...</div>';
+      }
+    });
+  </script>
+</body>
+</html>

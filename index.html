@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Saksham Lakhera | Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .skills-section {
+      margin-top: var(--spacing-xl);
+      padding: 3rem 0;
+      background-color: var(--bg-secondary-alt);
+      border-radius: 12px;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .skills-section h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skills-section p {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .skill-card {
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow), 0 8px 20px rgba(var(--accent-primary-rgb), 0.15);
+      border-left: 3px solid var(--accent-primary);
+    }
+    
+    .skill-card-header {
+      padding: 1.2rem 1.5rem;
+      background-color: rgba(var(--accent-primary-rgb), 0.05);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .skill-card-header h3 {
+      color: var(--text-primary);
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    
+    .skill-card-body {
+      padding: 1.5rem;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+    }
+    
+    .skill-item {
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      color: var(--accent-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    /* Color variations for skill tags */
+    .skill-item:nth-child(5n+1) {
+      background-color: rgba(79, 70, 229, 0.1);
+      color: #4f46e5; /* indigo */
+    }
+    
+    .skill-item:nth-child(5n+2) {
+      background-color: rgba(236, 72, 153, 0.1);
+      color: #ec4899; /* pink */
+    }
+    
+    .skill-item:nth-child(5n+3) {
+      background-color: rgba(234, 88, 12, 0.1);
+      color: #ea580c; /* orange */
+    }
+    
+    .skill-item:nth-child(5n+4) {
+      background-color: rgba(22, 163, 74, 0.1);
+      color: #16a34a; /* green */
+    }
+    
+    .skill-item:nth-child(5n+5) {
+      background-color: rgba(124, 58, 237, 0.1);
+      color: #7c3aed; /* purple */
+    }
+    
+    .skill-item:hover {
+      background-color: var(--accent-primary);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Specific hover effects for each color */
+    .skill-item:nth-child(5n+1):hover {
+      background-color: #4f46e5; /* indigo */
+    }
+    
+    .skill-item:nth-child(5n+2):hover {
+      background-color: #ec4899; /* pink */
+    }
+    
+    .skill-item:nth-child(5n+3):hover {
+      background-color: #ea580c; /* orange */
+    }
+    
+    .skill-item:nth-child(5n+4):hover {
+      background-color: #16a34a; /* green */
+    }
+    
+    .skill-item:nth-child(5n+5):hover {
+      background-color: #7c3aed; /* purple */
+    }
+    
+    @media (max-width: 768px) {
+      .skills-section {
+        padding: 2rem 0;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .skill-card-header {
+        padding: 1rem;
+      }
+      
+      .skill-card-body {
+        padding: 1rem;
+      }
+      
+      .skill-item {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+      }
+    }
+    
+    /* Terminal styles */
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .terminal-container {
+      flex: 1;
+      min-width: 350px;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      font-family: 'Fira Code', monospace;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .terminal-header {
+      background-color: #323232;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #555;
+    }
+    
+    .terminal-buttons {
+      display: flex;
+      gap: 8px;
+      margin-right: 12px;
+    }
+    
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    
+    .terminal-button.close {
+      background-color: #ff5f56;
+    }
+    
+    .terminal-button.minimize {
+      background-color: #ffbd2e;
+    }
+    
+    .terminal-button.maximize {
+      background-color: #27c93f;
+    }
+    
+    .terminal-title {
+      color: #ddd;
+      font-size: 0.8rem;
+      text-align: center;
+      flex-grow: 1;
+    }
+    
+    .terminal-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 36px);
+      background-color: #1e1e1e;
+      color: #ddd;
+    }
+    
+    .terminal-output {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    
+    .terminal-output p {
+      margin: 0 0 8px 0;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+    
+    .terminal-prompt {
+      color: #27c93f;
+      margin-right: 8px;
+      user-select: none;
+    }
+    
+    .terminal-text {
+      color: #ddd;
+      text-align: left;
+    }
+    
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+    }
+    
+    #terminal-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #ddd;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      outline: none;
+      padding: 0;
+      margin-left: 8px;
+    }
+    
+    .terminal-send {
+      background: transparent;
+      border: none;
+      color: #27c93f;
+      cursor: pointer;
+      padding: 0 5px;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+    
+    .terminal-send:hover {
+      color: #5aff7d;
+    }
+    
+    .terminal-output .output-success {
+      color: #16a34a; /* green instead of previously used green */
+    }
+    
+    .terminal-output .output-error {
+      color: #ef4444; /* red */
+    }
+    
+    .terminal-output .output-accent {
+      color: #f59e0b; /* amber/yellow */
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      
+      .hero-text {
+        text-align: center;
+      }
+      
+      .terminal-container {
+        width: 100%;
+        margin-top: 1.5rem;
+      }
+      
+      .terminal-body {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">Saksham Lakhera</a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title"><span class="breathing-animation">Hi, I'm <span class="accent">Saksham Lakhera</span></span></h1>
+          <p class="hero-subtitle">Software Engineer specializing in security, distributed systems, and backend development.</p>
+          <div class="hero-cta">
+            <a href="projects.html" class="btn btn-primary">View Projects</a>
+            <a href="contact.html" class="btn">Get In Touch</a>
+            <a href="assets/resume/SakshamLakhera_Resume.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Download Resume</a>
+          </div>
+        </div>
+        
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="terminal-button close"></span>
+              <span class="terminal-button minimize"></span>
+              <span class="terminal-button maximize"></span>
+            </div>
+            <div class="terminal-title">saksham-terminal</div>
+          </div>
+          <div class="terminal-body" id="chat-terminal">
+            <div class="terminal-output">
+              <p><span class="terminal-prompt">visitor@saksham:~$</span> <span class="terminal-text">Hello! I'm Saksham's interactive terminal. Ask me anything about him!</span></p>
+              <p><span class="terminal-prompt">visitor@saksham:~$</span> <span class="terminal-text">Try typing: "skills", "experience", "projects", "about", or "help"</span></p>
+            </div>
+            <div class="terminal-input-line">
+              <span class="terminal-prompt">visitor@saksham:~$</span>
+              <input type="text" 
+                id="terminal-input" 
+                name="terminal-input"
+                class="terminal-input"
+                placeholder="Type your question here..." 
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-label="Terminal input">
+              <button id="terminal-send" class="terminal-send" aria-label="Send command">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Projects -->
+  <section class="projects-section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div id="projects-grid" class="projects-grid">
+        <!-- Projects will be loaded dynamically via JavaScript -->
+        <div class="loading">Loading projects...</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="container">
+      <h2>Skills & Expertise</h2>
+      <p>Technologies and tools I specialize in</p>
+      
+      <div class="skills-grid">
+        <div class="skill-card animate-fade-in">
+          <div class="skill-card-header">
+            <h3>Programming Languages</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-list">
+              <div class="skill-item">C</div>
+              <div class="skill-item">C++</div>
+              <div class="skill-item">Java</div>
+              <div class="skill-item">Python</div>
+              <div class="skill-item">JavaScript</div>
+              <div class="skill-item">SQL</div>
+              <div class="skill-item">Bash</div>
+              <div class="skill-item">Lua</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card animate-fade-in" style="animation-delay: 0.1s;">
+          <div class="skill-card-header">
+            <h3>Frameworks & Technologies</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-list">
+              <div class="skill-item">RESTful APIs</div>
+              <div class="skill-item">Flask</div>
+              <div class="skill-item">Angular</div>
+              <div class="skill-item">TensorFlow</div>
+              <div class="skill-item">Docker</div>
+              <div class="skill-item">Kubernetes</div>
+              <div class="skill-item">OpenSSL</div>
+              <div class="skill-item">Terraform</div>
+              <div class="skill-item">Jenkins</div>
+              <div class="skill-item">Airflow</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card animate-fade-in" style="animation-delay: 0.2s;">
+          <div class="skill-card-header">
+            <h3>Cloud & Infrastructure</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-list">
+              <div class="skill-item">Azure</div>
+              <div class="skill-item">AWS</div>
+              <div class="skill-item">Google Cloud</div>
+              <div class="skill-item">Prometheus</div>
+              <div class="skill-item">Grafana</div>
+              <div class="skill-item">CI/CD</div>
+              <div class="skill-item">Distributed Systems</div>
+              <div class="skill-item">Microservices</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card animate-fade-in" style="animation-delay: 0.3s;">
+          <div class="skill-card-header">
+            <h3>Security</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-list">
+              <div class="skill-item">Bot Detection</div>
+              <div class="skill-item">Cryptography</div>
+              <div class="skill-item">OAuth 2.0</div>
+              <div class="skill-item">JWT</div>
+              <div class="skill-item">SSL/TLS</div>
+              <div class="skill-item">RBAC</div>
+              <div class="skill-item">DDoS Mitigation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Social Links Section -->
+  <section class="social-links-section">
+    <div class="container">
+      <h2>Connect With Me</h2>
+      <p>Follow my journey across different platforms</p>
+      
+      <div class="social-cards-container">
+        <!-- LinkedIn Card -->
+        <a href="https://linkedin.com/in/saksham-lakhera" target="_blank" class="social-mini-card linkedin-card">
+          <div class="social-mini-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <div class="social-mini-info">
+            <h3>LinkedIn</h3>
+            <p>Professional Updates</p>
+          </div>
+          <i class="fas fa-chevron-right social-mini-arrow"></i>
+        </a>
+        
+        <!-- GitHub Card -->
+        <a href="https://github.com/sakshamlakhera" target="_blank" class="social-mini-card github-card">
+          <div class="social-mini-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="social-mini-info">
+            <h3>GitHub</h3>
+            <p>Code Repositories</p>
+          </div>
+          <i class="fas fa-chevron-right social-mini-arrow"></i>
+        </a>
+        
+        <!-- Medium Card -->
+        <a href="https://medium.com/@sakshamlakhera" target="_blank" class="social-mini-card medium-card">
+          <div class="social-mini-icon">
+            <i class="fab fa-medium-m"></i>
+          </div>
+          <div class="social-mini-info">
+            <h3>Medium</h3>
+            <p>Articles & Thoughts</p>
+          </div>
+          <i class="fas fa-chevron-right social-mini-arrow"></i>
+        </a>
+        
+        <!-- Instagram Card -->
+        <a href="https://instagram.com/sakshamlakhera" target="_blank" class="social-mini-card instagram-card">
+          <div class="social-mini-icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <div class="social-mini-info">
+            <h3>Instagram</h3>
+            <p>Photos & Stories</p>
+          </div>
+          <i class="fas fa-chevron-right social-mini-arrow"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <!-- Project details will be loaded here -->
+    </div>
+    <button id="modal-close" class="modal-close" aria-label="Close modal">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Saksham Lakhera. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/sakshama" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/sakshamlakhera" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/sakshamlakhera" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <!-- Three.js library - Loaded before our custom scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/three-setup.js"></script>
+  <script>
+    // Debugging script
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded');
+      
+      // Additional terminal debugging
+      console.log('Terminal input element:', document.getElementById('terminal-input'));
+      console.log('Terminal output element:', document.querySelector('.terminal-output'));
+      console.log('Chat terminal element:', document.getElementById('chat-terminal'));
+      
+      // Try to fetch projects
+      fetch('./data/projects.json')
+        .then(response => {
+          console.log('Response status:', response.status);
+          console.log('Response ok:', response.ok);
+          return response.json();
+        })
+        .then(data => {
+          console.log('Projects data loaded:', data.length + ' projects found');
+        })
+        .catch(error => {
+          console.error('Error loading projects:', error);
+        });
+    });
+  </script>
+  <script src="js/main.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/home-sliders.js"></script>
+</body>
+</html>

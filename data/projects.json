@@ -1,0 +1,202 @@
+[
+  {
+    "id": "project-1",
+    "name": "Crypto Challenge Bot Protection",
+    "description": "A stateless bot detection and prevention system that uses cryptographic challenges to distinguish between legitimate clients and bots. The system was migrated from a centralized Django server to edge servers in C to improve performance.",
+    "shortDescription": "Bot protection system using cryptographic challenges.",
+    "techStack": ["C", "JavaScript", "Java", "Distributed Systems", "Cryptography"],
+    "installation": "# Enterprise deployment\n# Not publicly available",
+    "features": [
+      "Distributed processing across 365,000+ edge servers",
+      "Reduced server hops for verification, doubling speed",
+      "Increased customer adoption from 107 to 243",
+      "Stateless challenge-response mechanism",
+      "Advanced bot fingerprinting techniques"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project1.png",
+    "gallery": ["assets/images/p1-1.png", "assets/images/p1-2.png", "assets/images/p1-3.png"],
+    "model3d": "cryptochallenge"
+  },
+  {
+    "id": "project-2",
+    "name": "Adaptive Challenge System",
+    "description": "A patent-pending stateless bot detection feature using JavaScript, Java, and Akamai Metadata. This system adapts to different client environments to provide the most effective challenge while maintaining a seamless user experience.",
+    "shortDescription": "Advanced adaptive bot detection system (Patent filed).",
+    "techStack": ["JavaScript", "Java", "AngularJS", "Metadata Processing"],
+    "installation": "# Enterprise deployment\n# Patent pending technology",
+    "features": [
+      "Integrated into 27 customer solutions",
+      "Serving millions of users daily",
+      "Patent filed for version 2.0",
+      "Adaptive challenge selection based on client capabilities",
+      "Minimal performance impact on legitimate users"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project2.png",
+    "gallery": ["assets/images/p2-1.png", "assets/images/p2-2.png", "assets/images/p2-3.png"],
+    "model3d": "adaptivechallenge"
+  },
+  {
+    "id": "project-3",
+    "name": "Hype Event Stabilizer",
+    "description": "A system designed to optimize stability during peak load events with cookie-based state management for bot detection. This feature reduces server load by 70 million requests per day during high-traffic events.",
+    "shortDescription": "Traffic stabilization system for peak load events.",
+    "techStack": ["AngularJS", "Java", "Python", "Cookie Management"],
+    "installation": "# Enterprise deployment\n# For high-traffic sites",
+    "features": [
+      "Cookie-based state management",
+      "Reduced server load by 70 million requests/day",
+      "Enhanced stability during traffic spikes",
+      "Optimized resource allocation",
+      "Real-time traffic pattern analysis"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project3.png",
+    "gallery": ["assets/images/p3-1.png", "assets/images/p3-2.png", "assets/images/p3-3.png"],
+    "model3d": "hypeevent"
+  },
+  {
+    "id": "project-4",
+    "name": "Release Impact Monitor",
+    "description": "A Flask-based REST API system deployed on a Kubernetes cluster to monitor the impact of software releases across 365,000 servers in real-time. The system integrates multiple data sources and provides alerts for abnormal patterns.",
+    "shortDescription": "Monitoring system for software release impacts.",
+    "techStack": ["Flask", "Kubernetes", "MySQL", "OpenSSL", "RBAC", "Python"],
+    "installation": "# Enterprise deployment\ngit clone https://example.com/release-monitor.git\ncd release-monitor\ndocker-compose up",
+    "features": [
+      "Real-time monitoring across 365,000 servers",
+      "Multi-source data integration",
+      "Role-based access control",
+      "Reduced release rollback time by 75%",
+      "Anomaly detection and alerting"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project1.png",
+    "gallery": ["assets/images/p1-1.png", "assets/images/p1-2.png", "assets/images/p1-3.png"],
+    "model3d": "releasemonitor"
+  },
+  {
+    "id": "project-5",
+    "name": "Distributed Database Cluster",
+    "description": "A 70-node distributed database cluster deployed on Azure for SLA tracking. The project included automated cluster provisioning, pipeline creation, and database setup using Terraform.",
+    "shortDescription": "Automated distributed database cluster on Azure.",
+    "techStack": ["Azure", "Terraform", "SQL", "Airflow", "ETL", "Prometheus", "Grafana"],
+    "installation": "# Enterprise deployment\n# Infrastructure as Code repository\nterraform init\nterraform plan\nterraform apply",
+    "features": [
+      "70-node distributed cluster",
+      "Automated provisioning with Terraform",
+      "Reduced manual effort by 95%",
+      "Automated ETL operations via Airflow",
+      "Monitoring with Prometheus and Grafana"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project2.png",
+    "gallery": ["assets/images/p2-1.png", "assets/images/p2-2.png", "assets/images/p2-3.png"],
+    "model3d": "databasecluster"
+  },
+  {
+    "id": "project-6",
+    "name": "Neural Network Traffic Analyzer",
+    "description": "A deep learning system that identifies malicious network traffic patterns using a custom-built neural network architecture. The model was trained on 1.2 billion network requests to identify emerging attack vectors with 97.8% accuracy.",
+    "shortDescription": "AI-powered network traffic analysis for security threats.",
+    "techStack": ["Python", "TensorFlow", "Keras", "PyTorch", "CUDA", "Network Security"],
+    "installation": "# Clone repository\ngit clone https://github.com/sakshama/neural-traffic-analyzer.git\ncd neural-traffic-analyzer\n\n# Setup environment\npython -m venv env\nsource env/bin/activate\npip install -r requirements.txt\n\n# Run analysis\npython analyze.py --pcap-file=sample.pcap",
+    "features": [
+      "Real-time traffic analysis and anomaly detection",
+      "Custom CNN+LSTM architecture for sequential packet analysis",
+      "97.8% accuracy on zero-day attack detection",
+      "Processes up to 100,000 packets per second on standard hardware",
+      "Self-improving model with continuous learning capabilities"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project3.png",
+    "gallery": ["assets/images/p3-1.png", "assets/images/p3-2.png", "assets/images/p3-3.png"],
+    "model3d": "neuralnetwork"
+  },
+  {
+    "id": "project-7",
+    "name": "Transformer-Based Attack Predictor",
+    "description": "A state-of-the-art transformer model that predicts potential cyber attacks up to 6 hours before they occur based on early indicators in network traffic patterns. Built using PyTorch and deployed on NVIDIA Tesla V100 GPUs.",
+    "shortDescription": "Transformer AI model for preemptive cyber attack prediction.",
+    "techStack": ["PyTorch", "CUDA", "Transformer Architecture", "Python", "NVIDIA TensorRT"],
+    "installation": "# Install dependencies\npip install torch==1.9.0 transformers==4.8.2 nvidia-tensorrt\n\n# Clone repository\ngit clone https://github.com/sakshama/attack-predictor.git\ncd attack-predictor\n\n# Set up model\npython setup.py install\npython download_models.py",
+    "features": [
+      "Predicts attacks 4-6 hours before traditional systems detect them",
+      "Transformer architecture with custom attention mechanisms",
+      "98.3% precision and 94.1% recall on test dataset",
+      "Optimized inference using TensorRT for real-time processing",
+      "Interpretable predictions with attention visualization"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project1.png",
+    "gallery": ["assets/images/p1-1.png", "assets/images/p1-2.png", "assets/images/p1-3.png"],
+    "model3d": "transformer"
+  },
+  {
+    "id": "project-8",
+    "name": "Reinforcement Learning Bot Defender",
+    "description": "An AI system that uses reinforcement learning to dynamically adapt security measures against evolving bot attacks. The system continuously learns from new attack patterns and optimizes its defense strategies in real-time.",
+    "shortDescription": "Self-adaptive security system using reinforcement learning.",
+    "techStack": ["Python", "Reinforcement Learning", "TensorFlow", "Ray RLlib", "Kubernetes"],
+    "installation": "# Clone and install\ngit clone https://github.com/sakshama/rl-defender.git\ncd rl-defender\n\n# Create environment\nconda env create -f environment.yml\nconda activate rl-defender\n\n# Run simulation\npython simulate_defense.py --attack-model=advanced",
+    "features": [
+      "Adaptive defense mechanisms that evolve against new attack patterns",
+      "Multi-agent reinforcement learning architecture",
+      "Simulated attack environment for continuous training",
+      "65% reduction in successful attacks compared to static defenses",
+      "Kubernetes deployment for horizontal scaling"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project2.png",
+    "gallery": ["assets/images/p2-1.png", "assets/images/p2-2.png", "assets/images/p2-3.png"],
+    "model3d": "reinforcement"
+  },
+  {
+    "id": "project-9",
+    "name": "Generative Adversarial IDS",
+    "description": "An intrusion detection system that uses generative adversarial networks (GANs) to simulate potential attacks and strengthen defenses. The system pits two neural networks against each other: one generating attack patterns, the other detecting them.",
+    "shortDescription": "GAN-based intrusion detection with self-improving capabilities.",
+    "techStack": ["Python", "GANs", "TensorFlow", "Network Security", "Anomaly Detection"],
+    "installation": "# Clone repository\ngit clone https://github.com/sakshama/gan-ids.git\ncd gan-ids\n\n# Install dependencies\npip install -r requirements.txt\n\n# Run training\npython train_gan.py --epochs=100 --batch-size=64",
+    "features": [
+      "Self-improving security through adversarial training",
+      "Novel attack pattern generation for proactive defense",
+      "91.7% detection rate on zero-day attacks",
+      "Low false positive rate (0.3%) compared to traditional IDS (2-5%)",
+      "Configurable sensitivity based on security requirements"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project3.png",
+    "gallery": ["assets/images/p3-1.png", "assets/images/p3-2.png", "assets/images/p3-3.png"],
+    "model3d": "gannetwork"
+  },
+  {
+    "id": "project-10",
+    "name": "Computer Vision Security Monitor",
+    "description": "A computer vision system that monitors physical security environments using deep learning object detection and behavior analysis. The system can identify suspicious activities, unauthorized access, and security threats in real-time.",
+    "shortDescription": "AI vision system for physical security monitoring and threat detection.",
+    "techStack": ["Python", "OpenCV", "YOLO", "TensorFlow", "Edge Computing"],
+    "installation": "# Clone repository\ngit clone https://github.com/sakshama/vision-security.git\ncd vision-security\n\n# Setup environment\npython -m venv env\nsource env/bin/activate\npip install -r requirements.txt\n\n# Run with camera input\npython monitor.py --source=0 --confidence=0.6",
+    "features": [
+      "Real-time object detection and tracking using YOLOv5",
+      "Behavior analysis to detect suspicious activities",
+      "Person identification with optional face recognition",
+      "Edge device optimization for local processing",
+      "Alert system with configurable notification channels"
+    ],
+    "github": "#",
+    "live": null,
+    "image": "assets/images/project1.png",
+    "gallery": ["assets/images/p1-1.png", "assets/images/p1-2.png", "assets/images/p1-3.png"],
+    "model3d": "computervision"
+  }
+]
