@@ -17,153 +17,9 @@
   <link rel="stylesheet" href="css/style.css">
   
   <style>
+    /* Remove skills section styles */
     .skills-section {
-      margin-top: var(--spacing-xl);
-      padding: 3rem 0;
-      background-color: var(--bg-secondary-alt);
-      border-radius: 12px;
-      margin-bottom: var(--spacing-xl);
-    }
-    
-    .skills-section h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    
-    .skills-section p {
-      text-align: center;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-    
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .skill-card {
-      background-color: var(--bg-secondary);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      height: 100%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-left: 3px solid transparent;
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--card-shadow), 0 8px 20px rgba(var(--accent-primary-rgb), 0.15);
-      border-left: 3px solid var(--accent-primary);
-    }
-    
-    .skill-card-header {
-      padding: 1.2rem 1.5rem;
-      background-color: rgba(var(--accent-primary-rgb), 0.05);
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .skill-card-header h3 {
-      color: var(--text-primary);
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    
-    .skill-card-body {
-      padding: 1.5rem;
-    }
-    
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-xs);
-    }
-    
-    .skill-item {
-      background-color: rgba(var(--accent-primary-rgb), 0.1);
-      color: var(--accent-primary);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-    
-    /* Color variations for skill tags */
-    .skill-item:nth-child(5n+1) {
-      background-color: rgba(79, 70, 229, 0.1);
-      color: #4f46e5; /* indigo */
-    }
-    
-    .skill-item:nth-child(5n+2) {
-      background-color: rgba(236, 72, 153, 0.1);
-      color: #ec4899; /* pink */
-    }
-    
-    .skill-item:nth-child(5n+3) {
-      background-color: rgba(234, 88, 12, 0.1);
-      color: #ea580c; /* orange */
-    }
-    
-    .skill-item:nth-child(5n+4) {
-      background-color: rgba(22, 163, 74, 0.1);
-      color: #16a34a; /* green */
-    }
-    
-    .skill-item:nth-child(5n+5) {
-      background-color: rgba(124, 58, 237, 0.1);
-      color: #7c3aed; /* purple */
-    }
-    
-    .skill-item:hover {
-      background-color: var(--accent-primary);
-      color: var(--bg-primary);
-      transform: translateY(-2px);
-    }
-    
-    /* Specific hover effects for each color */
-    .skill-item:nth-child(5n+1):hover {
-      background-color: #4f46e5; /* indigo */
-    }
-    
-    .skill-item:nth-child(5n+2):hover {
-      background-color: #ec4899; /* pink */
-    }
-    
-    .skill-item:nth-child(5n+3):hover {
-      background-color: #ea580c; /* orange */
-    }
-    
-    .skill-item:nth-child(5n+4):hover {
-      background-color: #16a34a; /* green */
-    }
-    
-    .skill-item:nth-child(5n+5):hover {
-      background-color: #7c3aed; /* purple */
-    }
-    
-    @media (max-width: 768px) {
-      .skills-section {
-        padding: 2rem 0;
-      }
-      
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      
-      .skill-card-header {
-        padding: 1rem;
-      }
-      
-      .skill-card-body {
-        padding: 1rem;
-      }
-      
-      .skill-item {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-      }
+      display: none;
     }
     
     /* Terminal styles */
@@ -330,6 +186,261 @@
         height: 300px;
       }
     }
+    
+    .testimonials-section {
+      padding: 4rem 0;
+      background-color: var(--bg-secondary-alt);
+      margin: var(--spacing-xl) 0;
+      overflow: hidden;
+    }
+    
+    .testimonials-container {
+      position: relative;
+      overflow: hidden;
+      margin: 2rem 0;
+      padding: 1rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .testimonials-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 2rem;
+      width: 100%;
+    }
+    
+    .testimonial-card {
+      min-width: 100%;
+      width: 100%;
+      background-color: var(--bg-primary);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .author-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-primary);
+      flex-shrink: 0;
+      background-color: var(--bg-secondary);
+      display: block;
+    }
+    
+    .author-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .author-info h4 {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .author-info .role {
+      margin: 0.3rem 0 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .linkedin-link {
+      color: var(--accent-primary);
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+    }
+    
+    .linkedin-link:hover {
+      color: #0077b5;
+    }
+    
+    .testimonial-text {
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+      position: relative;
+      max-height: 120px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      flex: 1;
+    }
+    
+    .testimonial-text.expanded {
+      max-height: none;
+    }
+    
+    .testimonial-text::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, var(--bg-primary));
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .testimonial-text.expanded::after {
+      opacity: 0;
+    }
+    
+    .show-more-btn {
+      background: none;
+      border: none;
+      color: var(--accent-primary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+      align-self: flex-start;
+    }
+    
+    .show-more-btn:hover {
+      color: var(--accent-primary-dark);
+    }
+    
+    .show-more-btn i {
+      transition: transform 0.3s ease;
+    }
+    
+    .show-more-btn.expanded i {
+      transform: rotate(180deg);
+    }
+    
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      padding: 0 1rem;
+      margin-top: auto;
+    }
+    
+    .badge {
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      color: var(--accent-primary);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .testimonial-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .testimonial-nav {
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-nav:hover {
+      background-color: var(--accent-primary);
+      color: white;
+    }
+    
+    .testimonial-dots {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background-color: var(--accent-primary);
+      transform: scale(1.2);
+    }
+    
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: 3rem 0;
+      }
+      
+      .testimonials-container {
+        padding: 0.5rem;
+      }
+      
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+      
+      .testimonial-text {
+        font-size: 1.1rem;
+        padding: 0;
+      }
+      
+      .testimonial-meta {
+        padding: 0;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      
+      .author-image {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .author-info h4 {
+        font-size: 1.1rem;
+      }
+      
+      .author-info .role {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -347,11 +458,7 @@
           <li><a href="experience.html">Experience</a></li>
           <li><a href="awards.html">Awards</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
       </nav>
     </div>
   </header>
@@ -362,139 +469,284 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title"><span class="breathing-animation">Hi, I'm <span class="accent">Saksham Lakhera</span></span></h1>
-          <p class="hero-subtitle">Software Engineer specializing in security, distributed systems, and backend development.</p>
+          <p class="hero-subtitle">Software Engineer | AI/ML Enthusiast | Problem Solver</p>
           <div class="hero-cta">
-            <a href="projects.html" class="btn btn-primary">View Projects</a>
-            <a href="contact.html" class="btn">Get In Touch</a>
-            <a href="assets/resume/SakshamLakhera_Resume.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Download Resume</a>
+            <a href="assets/resume/Saksham_Lakhera_Resume.pdf" class="btn btn-primary" download="Saksham_Lakhera_Resume.pdf">Download Resume</a>
+            <a href="projects.html" class="btn btn-secondary">View My Work</a>
           </div>
         </div>
-        
-        <div class="terminal-container">
-          <div class="terminal-header">
-            <div class="terminal-buttons">
-              <span class="terminal-button close"></span>
-              <span class="terminal-button minimize"></span>
-              <span class="terminal-button maximize"></span>
-            </div>
-            <div class="terminal-title">saksham-terminal</div>
+        <div class="hero-image">
+          <img src="assets/images/profile.jpg" alt="Saksham Lakhera" class="profile-image">
+        </div>
+      </div>
+      <div class="hero-intro">
+        <p>I am a passionate Software Engineer with expertise in full-stack development and a keen interest in Artificial Intelligence and Machine Learning. Currently pursuing my Master's in Computer Science at the University at Buffalo, I bring a unique blend of academic knowledge and industry experience.</p>
+        <p>With over 4 years of experience at Akamai Technologies, I've worked on challenging projects involving bot detection, distributed systems, and performance optimization. My work has contributed to significant improvements in system efficiency and security.</p>
+        <div class="interests-grid">
+          <div class="interest-item">
+            <i class="fas fa-brain"></i>
+            <span>Machine Learning and AI applications</span>
           </div>
-          <div class="terminal-body" id="chat-terminal">
-            <div class="terminal-output">
-              <p><span class="terminal-prompt">visitor@saksham:~$</span> <span class="terminal-text">Hello! I'm Saksham's interactive terminal. Ask me anything about him!</span></p>
-              <p><span class="terminal-prompt">visitor@saksham:~$</span> <span class="terminal-text">Try typing: "skills", "experience", "projects", "about", or "help"</span></p>
-            </div>
-            <div class="terminal-input-line">
-              <span class="terminal-prompt">visitor@saksham:~$</span>
-              <input type="text" 
-                id="terminal-input" 
-                name="terminal-input"
-                class="terminal-input"
-                placeholder="Type your question here..." 
-                autocomplete="off"
-                autocapitalize="off"
-                spellcheck="false"
-                aria-label="Terminal input">
-              <button id="terminal-send" class="terminal-send" aria-label="Send command">
-                <i class="fas fa-arrow-right"></i>
-              </button>
-            </div>
+          <div class="interest-item">
+            <i class="fas fa-server"></i>
+            <span>Distributed Systems and Cloud Computing</span>
+          </div>
+          <div class="interest-item">
+            <i class="fas fa-code"></i>
+            <span>Software Architecture and Design</span>
+          </div>
+          <div class="interest-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Performance Optimization</span>
           </div>
         </div>
+        <a href="about.html" class="btn btn-outline read-more-btn">
+          <i class="fas fa-arrow-right"></i>
+          Learn More About Me
+        </a>
       </div>
     </div>
   </section>
   
   <!-- Featured Projects -->
-  <section class="projects-section">
+  <section class="featured-projects">
     <div class="container">
-      <h2>Featured Projects</h2>
-      <div id="projects-grid" class="projects-grid">
-        <!-- Projects will be loaded dynamically via JavaScript -->
-        <div class="loading">Loading projects...</div>
+      <div class="section-header">
+        <h1>Featured Projects</h1>
+        <p>Highlighting my most impactful work and contributions</p>
+      </div>
+      
+      <div class="projects-showcase">
+        <div class="project-highlight">
+          <div class="project-preview">
+            <img src="assets/images/project3.png" alt="Digital Mental Health Assessment" class="project-image">
+            <div class="project-overlay">
+              <div class="project-badge">Featured</div>
+              <div class="project-links">
+                <a href="https://mentalhealthevaluation.streamlit.app/" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <div class="project-meta">
+              <span class="project-category">AI/ML</span>
+              <span class="project-date">2024</span>
+            </div>
+            <h3 class="project-title">Digital Mental Health Assessment</h3>
+            <p class="project-description">An interactive web application that evaluates mental health conditions such as depression and anxiety based on behavioral patterns, substance use, trauma, and gaming habits.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">XGBoost</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-preview">
+              <img src="assets/images/project4.png" alt="Interactive Portfolio Website" class="project-image">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://saksham-lakhera.github.io/sakshamlakhera.github.io/" class="project-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-category">Web Development</span>
+                <span class="project-date">2024</span>
+              </div>
+              <h3 class="project-title">Interactive Portfolio Website</h3>
+              <p class="project-description">A personal portfolio website built using HTML, CSS, and JavaScript to showcase projects, skills, and experience with dynamic content loading.</p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JSON</span>
+                <span class="tech-tag">GitHub Pages</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-preview">
+              <img src="assets/images/project5.png" alt="LunchMate: Social Lunch Matching App" class="project-image">
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-category">Web and Database Design</span>
+                <span class="project-date">2024</span>
+              </div>
+              <h3 class="project-title">LunchMate: Social Lunch Matching App</h3>
+              <p class="project-description">A social networking platform designed to help university students connect over shared meals using a BCNF-optimized PostgreSQL database.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">SQLAlchemy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-cta">
+        <a href="projects.html" class="btn btn-primary">
+          <span>View All Projects</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
   
-  <!-- Skills Section -->
-  <section class="skills-section">
+  <!-- Experience Section -->
+  <section class="featured-projects">
     <div class="container">
-      <h2>Skills & Expertise</h2>
-      <p>Technologies and tools I specialize in</p>
+      <div class="section-header">
+        <h1>Experience</h1>
+        <p>My professional journey and key roles</p>
+      </div>
       
-      <div class="skills-grid">
-        <div class="skill-card animate-fade-in">
-          <div class="skill-card-header">
-            <h3>Programming Languages</h3>
+      <div class="projects-showcase">
+        <div class="project-highlight">
+          <div class="project-preview">
+            <img src="assets/images/akamai.jpg" alt="Akamai Technologies" class="project-image">
+            <div class="project-overlay">
+              <div class="project-badge">Completed</div>
+            </div>
           </div>
-          <div class="skill-card-body">
-            <div class="skill-list">
-              <div class="skill-item">C</div>
-              <div class="skill-item">C++</div>
-              <div class="skill-item">Java</div>
-              <div class="skill-item">Python</div>
-              <div class="skill-item">JavaScript</div>
-              <div class="skill-item">SQL</div>
-              <div class="skill-item">Bash</div>
-              <div class="skill-item">Lua</div>
+          <div class="project-details">
+            <div class="project-meta">
+              <span class="project-category">Software Engineer II</span>
+              <span class="project-date">2020 - 2024</span>
+            </div>
+            <h3 class="project-title">Akamai Technologies</h3>
+            <p class="project-description">Led development of bot detection systems and performance optimization solutions. Implemented distributed systems architecture and contributed to security enhancements.</p>
+            <div class="project-tech">
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Distributed Systems</span>
+              <span class="tech-tag">Network Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-cta">
+        <a href="experience.html" class="btn btn-primary">
+          <span>View Full Experience</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Education Section -->
+  <section class="featured-projects">
+    <div class="container">
+      <div class="section-header">
+        <h1>Education</h1>
+        <p>My academic journey and qualifications</p>
+      </div>
+      
+      <div class="projects-showcase">
+        <div class="project-highlight">
+          <div class="project-preview">
+            <img src="assets/images/ub.jpg" alt="University at Buffalo" class="project-image">
+            <div class="project-overlay">
+              <div class="project-badge">Current</div>
+            </div>
+          </div>
+          <div class="project-details">
+            <div class="project-meta">
+              <span class="project-category">Master's Degree</span>
+              <span class="project-date">2024 - Present</span>
+            </div>
+            <h3 class="project-title">University at Buffalo</h3>
+            <p class="project-description">Master of Science in Computer Science with a focus on Artificial Intelligence and Machine Learning. Currently pursuing advanced studies in distributed systems, machine learning algorithms, and software engineering.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Artificial Intelligence</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">Distributed Systems</span>
+              <span class="tech-tag">Software Engineering</span>
             </div>
           </div>
         </div>
         
-        <div class="skill-card animate-fade-in" style="animation-delay: 0.1s;">
-          <div class="skill-card-header">
-            <h3>Frameworks & Technologies</h3>
+        <div class="project-highlight" style="margin-top: 2rem;">
+          <div class="project-preview">
+            <img src="assets/images/rv.jpg" alt="R.V. College of Engineering" class="project-image">
+            <div class="project-overlay">
+              <div class="project-badge">Completed</div>
+            </div>
           </div>
-          <div class="skill-card-body">
-            <div class="skill-list">
-              <div class="skill-item">RESTful APIs</div>
-              <div class="skill-item">Flask</div>
-              <div class="skill-item">Angular</div>
-              <div class="skill-item">TensorFlow</div>
-              <div class="skill-item">Docker</div>
-              <div class="skill-item">Kubernetes</div>
-              <div class="skill-item">OpenSSL</div>
-              <div class="skill-item">Terraform</div>
-              <div class="skill-item">Jenkins</div>
-              <div class="skill-item">Airflow</div>
+          <div class="project-details">
+            <div class="project-meta">
+              <span class="project-category">Bachelor's Degree</span>
+              <span class="project-date">2016 - 2020</span>
+            </div>
+            <h3 class="project-title">R.V. College of Engineering</h3>
+            <p class="project-description">Bachelor of Technology in Computer Science with a focus on software development and system design. Gained foundational knowledge in programming, algorithms, and computer systems.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Computer Science</span>
+              <span class="tech-tag">Software Development</span>
+              <span class="tech-tag">System Design</span>
+              <span class="tech-tag">Algorithms</span>
             </div>
           </div>
         </div>
-        
-        <div class="skill-card animate-fade-in" style="animation-delay: 0.2s;">
-          <div class="skill-card-header">
-            <h3>Cloud & Infrastructure</h3>
-          </div>
-          <div class="skill-card-body">
-            <div class="skill-list">
-              <div class="skill-item">Azure</div>
-              <div class="skill-item">AWS</div>
-              <div class="skill-item">Google Cloud</div>
-              <div class="skill-item">Prometheus</div>
-              <div class="skill-item">Grafana</div>
-              <div class="skill-item">CI/CD</div>
-              <div class="skill-item">Distributed Systems</div>
-              <div class="skill-item">Microservices</div>
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Testimonials</h1>
+        <p>What people say about working with me</p>
+      </div>
+      
+      <div class="testimonials-container">
+        <div class="testimonials-track">
+          <!-- Testimonials will be loaded here dynamically -->
         </div>
-        
-        <div class="skill-card animate-fade-in" style="animation-delay: 0.3s;">
-          <div class="skill-card-header">
-            <h3>Security</h3>
-          </div>
-          <div class="skill-card-body">
-            <div class="skill-list">
-              <div class="skill-item">Bot Detection</div>
-              <div class="skill-item">Cryptography</div>
-              <div class="skill-item">OAuth 2.0</div>
-              <div class="skill-item">JWT</div>
-              <div class="skill-item">SSL/TLS</div>
-              <div class="skill-item">RBAC</div>
-              <div class="skill-item">DDoS Mitigation</div>
-            </div>
-          </div>
+      </div>
+      
+      <div class="testimonial-controls">
+        <button class="testimonial-nav prev" aria-label="Previous testimonial">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="testimonial-dots">
+          <!-- Dots will be added dynamically -->
         </div>
+        <button class="testimonial-nav next" aria-label="Next testimonial">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -619,5 +871,148 @@
   <script src="js/main.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/home-sliders.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.testimonials-track');
+      const dotsContainer = document.querySelector('.testimonial-dots');
+      const prevBtn = document.querySelector('.testimonial-nav.prev');
+      const nextBtn = document.querySelector('.testimonial-nav.next');
+      const container = document.querySelector('.testimonials-container');
+      
+      let currentIndex = 0;
+      let testimonials = [];
+      let autoSlideInterval;
+      let cardWidth;
+      
+      // Load testimonials from JSON
+      fetch('./data/testimonials.json')
+        .then(response => response.json())
+        .then(data => {
+          testimonials = data.testimonials.sort((a, b) => a.priority - b.priority);
+          
+          // Create testimonial cards
+          testimonials.forEach((testimonial, index) => {
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            
+            card.innerHTML = `
+              <div class="testimonial-header">
+                <img src="${testimonial.image}" alt="${testimonial.name}" class="author-image" onerror="this.src='assets/images/placeholder.jpg'">
+                <div class="author-info">
+                  <h4>${testimonial.name}</h4>
+                  <p class="role">${testimonial.role}, ${testimonial.company}</p>
+                  <a href="${testimonial.linkedin}" target="_blank" class="linkedin-link">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+              <p class="testimonial-text">"${testimonial.testimonial}"</p>
+              <button class="show-more-btn">
+                <span>Show More</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="testimonial-meta">
+                <span class="date">${testimonial.date}</span>
+                <span class="badge">${testimonial.role.includes('Manager') ? 'Manager' : 'Lead Engineer'}</span>
+              </div>
+            `;
+            
+            track.appendChild(card);
+            
+            // Create dot
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (index === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+          });
+          
+          // Calculate card width after all cards are added
+          cardWidth = track.querySelector('.testimonial-card').offsetWidth;
+          
+          // Add show more functionality
+          const showMoreButtons = document.querySelectorAll('.show-more-btn');
+          showMoreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              const testimonialText = this.previousElementSibling;
+              const isExpanded = testimonialText.classList.contains('expanded');
+              
+              testimonialText.classList.toggle('expanded');
+              this.classList.toggle('expanded');
+              
+              if (isExpanded) {
+                this.querySelector('span').textContent = 'Show More';
+              } else {
+                this.querySelector('span').textContent = 'Show Less';
+              }
+            });
+          });
+          
+          updateSlider();
+          startAutoSlide();
+          
+          // Handle window resize
+          window.addEventListener('resize', () => {
+            cardWidth = track.querySelector('.testimonial-card').offsetWidth;
+            updateSlider();
+          });
+        })
+        .catch(error => console.error('Error loading testimonials:', error));
+      
+      function updateSlider() {
+        const offset = currentIndex * (cardWidth + 32); // 32px is the gap between cards
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        // Update dots
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Reset show more state when changing slides
+        const testimonialTexts = document.querySelectorAll('.testimonial-text');
+        const showMoreButtons = document.querySelectorAll('.show-more-btn');
+        
+        testimonialTexts.forEach(text => text.classList.remove('expanded'));
+        showMoreButtons.forEach(button => {
+          button.classList.remove('expanded');
+          button.querySelector('span').textContent = 'Show More';
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+        resetAutoSlide();
+      }
+      
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        updateSlider();
+        resetAutoSlide();
+      }
+      
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        updateSlider();
+        resetAutoSlide();
+      }
+      
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+      }
+      
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+      }
+      
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      
+      // Pause auto-slide on hover
+      track.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+      track.addEventListener('mouseleave', startAutoSlide);
+    });
+  </script>
 </body>
 </html>

@@ -80,7 +80,7 @@ function initTerminal() {
 - <span style="color: #16a34a;">Security:</span> Bot Detection, Cryptography, OAuth 2.0, JWT`;
     } else if (query.includes('experience') || query.includes('work') || query.includes('job')) {
       return `<span class="output-accent">Work Experience:</span><br>
-- <span style="color: #4f46e5;">Software Engineer II at Akamai Technologies</span> (Nov 2022 – Jul 2024)<br>
+- <span style="color: #4f46e5;">Software Engineer II at Akamai Technologies</span> (Nov 2022 – Aug 2024)<br>
   DDoS mitigation, Network Security<br>
 - <span style="color: #ec4899;">Software Engineer at Akamai Technologies</span> (Aug 2020 – Oct 2022)<br>
   Anomaly detection, Big data Analysis<br>

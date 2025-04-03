@@ -1,35 +1,5 @@
 // DOM Elements
 document.addEventListener('DOMContentLoaded', function() {
-  // Theme Toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-  
-  // Check for saved theme preference or use system preference
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-  } else {
-    // Check system preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (prefersDarkScheme.matches) {
-      htmlElement.setAttribute('data-theme', 'dark');
-      updateThemeIcon('dark');
-    }
-  }
-  
-  // Toggle theme when button is clicked
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    });
-  }
-  
   // Experience card collapsible functionality
   const experienceCardHeaders = document.querySelectorAll('.experience-card-header');
   
@@ -65,18 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     firstCardBody.classList.add('active');
     firstCardToggle.parentElement.classList.add('card-toggle-active');
-  }
-  
-  function updateThemeIcon(theme) {
-    if (!themeToggle) return;
-    
-    if (theme === 'dark') {
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      themeToggle.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    }
   }
   
   // Modal functionality - initialize variables first
@@ -146,17 +104,17 @@ document.addEventListener('DOMContentLoaded', function() {
                          window.location.pathname === '';
       
       if (isHomePage) {
-        // On homepage, initially show only 6 projects
-        displayProjects(projects.slice(0, 6));
+        // On homepage, initially show only 3 projects
+        displayProjects(projects.slice(0, 3));
         
-        // Add "Load More" button if there are more than 6 projects
-        if (projects.length > 6) {
+        // Add "View All Projects" button if there are more than 3 projects
+        if (projects.length > 3) {
           const loadMoreContainer = document.createElement('div');
           loadMoreContainer.className = 'load-more-container';
           
           const loadMoreBtn = document.createElement('button');
           loadMoreBtn.className = 'btn btn-primary load-more-btn';
-          loadMoreBtn.textContent = 'Load More Projects';
+          loadMoreBtn.textContent = 'View All Projects';
           loadMoreBtn.addEventListener('click', function() {
             // Redirect to projects page
             window.location.href = 'projects.html';
@@ -372,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </video>
             </div>` : ''}
           
-          <div class="project-3d-view" id="project-3d-${projectId}"></div>
+          <!-- <div class="project-3d-view" id="project-3d-${projectId}"></div> -->
           
           <div class="project-gallery">
             ${galleryHtml}
@@ -437,30 +395,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.overflow = ''; // Restore scrolling
   }
   
-  // Handle contact form submission
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(contactForm);
-      const formValues = Object.fromEntries(formData.entries());
-      
-      // Normally we would send this data to a server
-      // Since GitHub Pages doesn't support server-side code, we'll just log it and show a success message
-      console.log('Form submission:', formValues);
-      
-      // Show success message
-      const successMessage = document.createElement('div');
-      successMessage.classList.add('alert', 'alert-success');
-      successMessage.textContent = 'Thanks for your message! Since this is a static site, the form doesn\'t actually submit to a server. In a real application, this would be sent to a backend service.';
-      
-      contactForm.innerHTML = '';
-      contactForm.appendChild(successMessage);
-    });
-  }
-  
   // Handle active nav links
   document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -487,79 +421,152 @@ document.addEventListener('DOMContentLoaded', function() {
     // Skip animation functionality for now to ensure content is always visible
   });
   
-  // Mobile Navigation
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    
-    if (mobileMenuToggle && navLinks) {
-      // Function to check if we're on mobile viewport
-      const isMobileViewport = () => window.innerWidth <= 768;
-      
-      // Add resize event listener to handle viewport changes
-      window.addEventListener('resize', function() {
-        if (!isMobileViewport() && navLinks.classList.contains('active')) {
-          // Close mobile menu when screen size increases beyond mobile breakpoint
-          navLinks.classList.remove('active');
-          const icon = mobileMenuToggle.querySelector('i');
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      });
-      
-      // Toggle menu on hamburger click
-      mobileMenuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        
-        // Change icon based on menu state
+  // Mobile Menu Toggle
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  
+  if (mobileMenuToggle && navLinks) {
+    mobileMenuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+        navLinks.classList.remove('active');
         const icon = mobileMenuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-          
-          // Add subtle animation to menu items
-          const navItems = navLinks.querySelectorAll('li');
-          navItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-              item.style.transition = 'all 0.3s ease';
-              item.style.opacity = '1';
-              item.style.transform = 'translateY(0)';
-            }, 50 * index);
-          });
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when clicking a link
+    const navItems = navLinks.querySelectorAll('a');
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
       });
+    });
+  }
+  
+  // Load Experience
+  const experienceContainer = document.getElementById('experience-cards');
+  if (experienceContainer) {
+    console.log("Found experience container, loading experience...");
+    loadExperience();
+  }
+  
+  async function loadExperience() {
+    try {
+      console.log("Attempting to load experience from ./data/experience.json");
       
-      // Close menu when a link is clicked
-      const navItems = navLinks.querySelectorAll('a');
-      navItems.forEach(item => {
-        item.addEventListener('click', function() {
-          // Only close if we're in mobile view
-          if (isMobileViewport()) {
-            navLinks.classList.remove('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+      const response = await fetch('./data/experience.json');
+      if (!response.ok) throw new Error('Failed to load experience data');
+      
+      const experience = await response.json();
+      console.log(`Successfully loaded ${experience.length} experience entries`);
+      
+      displayExperience(experience);
+      
+    } catch (error) {
+      console.error('Error in loadExperience function:', error);
+      if (experienceContainer) {
+        experienceContainer.innerHTML = `<p>Failed to load experience. Error: ${error.message}</p>`;
+      }
+    }
+  }
+  
+  function displayExperience(experience) {
+    if (!experienceContainer) return;
+    
+    experienceContainer.innerHTML = '';
+    
+    experience.forEach(exp => {
+      const experienceCard = document.createElement('div');
+      experienceCard.classList.add('experience-card', 'animate-fade-in');
+      
+      const skillsHtml = exp.skills.map(skill => 
+        `<span class="experience-tag">${skill}</span>`
+      ).join('');
+      
+      const detailsHtml = exp.details.map(detail => 
+        `<li>${detail}</li>`
+      ).join('');
+      
+      experienceCard.innerHTML = `
+        <div class="experience-card-header" data-target="exp-${exp.id}">
+          <div class="experience-header-content">
+            <img src="${exp.image}" alt="${exp.company} logo" class="company-logo">
+            <div class="experience-info">
+              <div class="experience-period">${exp.period}</div>
+              <h3 class="experience-position">${exp.position}</h3>
+              <h4 class="experience-company">${exp.company}</h4>
+              <div class="experience-location">${exp.location}</div>
+            </div>
+          </div>
+          <div class="card-toggle">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="experience-card-body" id="exp-${exp.id}">
+          <p class="experience-description">${exp.description}</p>
+          <div class="experience-details">
+            <ul>
+              ${detailsHtml}
+            </ul>
+          </div>
+          <div class="experience-tags">
+            ${skillsHtml}
+          </div>
+        </div>
+      `;
+      
+      experienceContainer.appendChild(experienceCard);
+    });
+    
+    // Initialize experience card functionality
+    const experienceCardHeaders = document.querySelectorAll('.experience-card-header');
+    
+    experienceCardHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const body = document.getElementById(targetId);
+        const toggle = this.querySelector('.card-toggle i');
+        
+        body.classList.toggle('active');
+        toggle.parentElement.classList.toggle('card-toggle-active');
+        
+        // Close other cards
+        document.querySelectorAll('.experience-card-body').forEach(otherBody => {
+          if (otherBody.id !== targetId && otherBody.classList.contains('active')) {
+            otherBody.classList.remove('active');
+            const otherHeader = document.querySelector(`[data-target="${otherBody.id}"]`);
+            otherHeader.querySelector('.card-toggle').classList.remove('card-toggle-active');
           }
         });
       });
+    });
+    
+    // Expand the first experience card by default
+    if (experienceCardHeaders.length > 0) {
+      const firstCard = experienceCardHeaders[0];
+      const firstCardTargetId = firstCard.getAttribute('data-target');
+      const firstCardBody = document.getElementById(firstCardTargetId);
+      const firstCardToggle = firstCard.querySelector('.card-toggle i');
       
-      // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
-        const isClickInsideNav = navLinks.contains(event.target);
-        const isClickOnToggle = mobileMenuToggle.contains(event.target);
-        
-        if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-          const icon = mobileMenuToggle.querySelector('i');
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      });
+      firstCardBody.classList.add('active');
+      firstCardToggle.parentElement.classList.add('card-toggle-active');
     }
-  });
+  }
 });

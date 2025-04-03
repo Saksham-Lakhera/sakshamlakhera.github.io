@@ -17,307 +17,248 @@
   <link rel="stylesheet" href="css/style.css">
   
   <style>
-    .experience-timeline {
-      max-width: 850px;
-      margin: 0 auto;
-      position: relative;
-      padding: 20px 0;
-    }
-    
-    .experience-timeline::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      background-color: var(--accent-primary);
-      top: 0;
-      bottom: 0;
-      left: 50px;
-      margin-left: -1px;
-    }
-    
-    .experience-cards {
-      max-width: 850px;
-      margin: 0 auto;
-      position: relative;
-      padding: 20px 0;
+    .experience-section {
+      margin-top: var(--spacing-xl);
     }
     
     .experience-card {
       background-color: var(--bg-secondary);
       border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: var(--card-shadow);
       overflow: hidden;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 3rem;
       transition: all 0.3s ease;
       border-left: 3px solid transparent;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 200px;
+    }
+    
+    .experience-card:nth-child(even) {
+      flex-direction: row-reverse;
     }
     
     .experience-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--card-shadow), 0 5px 15px rgba(var(--accent-primary-rgb), 0.1);
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow), 0 8px 20px rgba(var(--accent-primary-rgb), 0.15);
       border-left: 3px solid var(--accent-primary);
     }
     
-    .experience-card-header {
-      padding: 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid transparent;
+    .experience-preview {
+      position: relative;
+      width: 35%;
+      min-width: 300px;
+      overflow: hidden;
       transition: all 0.3s ease;
+      aspect-ratio: 16/9;
     }
     
-    .experience-card-header:hover {
-      background-color: rgba(var(--accent-primary-rgb), 0.05);
+    .experience-card.expanded .experience-preview {
+      width: 0;
+      min-width: 0;
+      opacity: 0;
     }
     
-    .experience-header-content {
-      flex: 1;
+    .experience-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
     }
     
-    .experience-period {
+    .experience-card:hover .experience-image {
+      transform: scale(1.05);
+    }
+    
+    .experience-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .experience-card:hover .experience-overlay {
+      opacity: 1;
+    }
+    
+    .experience-badge {
+      background-color: var(--accent-primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: 5px;
     }
     
-    .experience-position {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0 0 5px 0;
+    .experience-details {
+      padding: 2rem;
+      width: 65%;
+      transition: width 0.3s ease;
+    }
+    
+    .experience-card.expanded .experience-details {
+      width: 100%;
+    }
+    
+    .experience-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    .experience-category {
       color: var(--accent-primary);
+      font-weight: 500;
+    }
+    
+    .experience-date {
+      color: var(--text-secondary);
+    }
+    
+    .experience-title {
+      font-size: 1.5rem;
+      margin: 0 0 1rem 0;
+      color: var(--text-primary);
     }
     
     .experience-company {
       font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0;
-    }
-    
-    .card-toggle {
-      margin-left: 15px;
-      color: var(--accent-primary);
-      transition: transform 0.3s ease;
-      background-color: rgba(var(--accent-primary-rgb), 0.1);
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .card-toggle-active {
-      transform: rotate(180deg);
-    }
-    
-    .experience-card-body {
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.5s ease;
-    }
-    
-    .experience-card-body.active {
-      padding: 20px;
-      max-height: 1000px;
-      border-top: 1px solid var(--border-color);
-    }
-    
-    .experience-item {
-      padding: 30px 40px 30px 80px;
-      position: relative;
-      background-color: var(--bg-secondary);
-      border-radius: 8px;
-      margin-bottom: 40px;
-      box-shadow: var(--card-shadow);
-    }
-    
-    .experience-item::before {
-      content: '';
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      left: -12px;
-      background-color: var(--accent-primary);
-      border: 4px solid var(--bg-primary);
-      top: 30px;
-      border-radius: 50%;
-      z-index: 1;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
     }
     
     .experience-description {
-      margin-bottom: 20px;
-      line-height: 1.6;
       color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
     
-    .experience-details ul {
-      padding-left: 20px;
+    .experience-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
     }
     
-    .experience-details li {
-      margin-bottom: 10px;
+    .experience-card.expanded .experience-list {
+      max-height: 1000px;
+    }
+    
+    .experience-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
       line-height: 1.6;
     }
     
-    .experience-tags {
+    .experience-list li::before {
+      content: '•';
+      color: var(--accent-primary);
+      position: absolute;
+      left: 0;
+    }
+    
+    .experience-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 15px;
+      gap: 0.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
     }
     
-    .experience-tag {
-      display: inline-block;
+    .experience-card.expanded .experience-tech {
+      max-height: 1000px;
+    }
+    
+    .tech-tag {
       background-color: rgba(var(--accent-primary-rgb), 0.1);
       color: var(--accent-primary);
-      font-size: 0.8rem;
-      padding: 3px 8px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-    }
-    
-    .experience-tag:hover {
-      background-color: rgba(var(--accent-primary-rgb), 0.2);
-    }
-    
-    .skills-section {
-      margin-top: var(--spacing-xl);
-    }
-    
-    .skill-category {
-      margin-bottom: var(--spacing-lg);
-    }
-    
-    .skill-category h3 {
-      margin-bottom: var(--spacing-sm);
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 5px;
-    }
-    
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-xs);
-    }
-    
-    .skill-item {
-      background-color: var(--bg-secondary);
       padding: 0.4rem 0.8rem;
       border-radius: 20px;
       font-size: 0.9rem;
+      transition: all 0.2s ease;
     }
     
-    .education-section {
-      margin-top: var(--spacing-xl);
+    .tech-tag:hover {
+      background-color: var(--accent-primary);
+      color: white;
     }
     
-    .education-item {
-      margin-bottom: var(--spacing-lg);
-      background-color: var(--bg-secondary);
-      padding: var(--spacing-md);
-      border-radius: 8px;
-      box-shadow: var(--card-shadow);
-    }
-    
-    .education-item h3 {
-      margin-top: 0;
-      margin-bottom: 5px;
-    }
-    
-    .education-item p {
-      margin-bottom: 5px;
-    }
-    
-    .education-period {
+    .show-more-btn {
+      background-color: var(--accent-primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-secondary);
+      transition: all 0.2s ease;
+      margin-top: 1rem;
+    }
+    
+    .show-more-btn:hover {
+      background-color: rgba(var(--accent-primary-rgb), 0.9);
     }
     
     @media (max-width: 768px) {
-      .experience-timeline::before {
-        left: 31px;
+      .experience-card {
+        flex-direction: column;
+        min-height: auto;
       }
       
-      .experience-item {
-        padding-left: 60px;
+      .experience-card:nth-child(even) {
+        flex-direction: column;
       }
       
-      .experience-item::before {
-        left: 20px;
+      .experience-preview {
+        width: 100%;
+        min-width: auto;
+        height: auto;
+        aspect-ratio: 16/9;
       }
       
-      .experience-card-header {
-        padding: 15px;
+      .experience-card.expanded .experience-preview {
+        width: 0;
+        height: 0;
+        opacity: 0;
       }
       
-      .experience-position {
-        font-size: 1.2rem;
+      .experience-details {
+        width: 100%;
+        padding: 1.5rem;
+      }
+      
+      .experience-card.expanded .experience-details {
+        width: 100%;
+      }
+      
+      .experience-title {
+        font-size: 1.3rem;
       }
       
       .experience-company {
-        font-size: 1rem;
-      }
-      
-      .experience-card-body.active {
-        padding: 15px;
-      }
-      
-      .experience-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 10px;
-      }
-      
-      .experience-tag {
-        margin-bottom: 0;
-        font-size: 0.75rem;
-        padding: 2px 6px;
-      }
-      
-      .card-toggle {
-        width: 25px;
-        height: 25px;
-        min-width: 25px;
-      }
-      
-      .experience-card {
-        margin-bottom: 15px;
-      }
-      
-      .experience-details ul {
-        padding-left: 15px;
-      }
-      
-      .experience-details li {
-        margin-bottom: 8px;
-      }
-    }
-    
-    /* Additional mobile tweaks for smaller screens */
-    @media (max-width: 480px) {
-      .experience-position {
         font-size: 1.1rem;
       }
       
-      .experience-company {
+      .experience-list li {
         font-size: 0.9rem;
       }
       
-      .experience-card-header {
-        padding: 12px;
-      }
-      
-      .experience-card-body.active {
-        padding: 12px;
-      }
-      
-      .experience-period {
+      .tech-tag {
         font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
       }
     }
   </style>
@@ -337,11 +278,7 @@
           <li><a href="experience.html" class="active">Experience</a></li>
           <li><a href="awards.html">Awards</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
       </nav>
     </div>
   </header>
@@ -354,134 +291,122 @@
         <p>My journey in software development and engineering</p>
       </div>
       
-      <div class="experience-cards">
+      <div class="experience-section">
+        <!-- Akamai Technologies - Software Engineer II -->
         <div class="experience-card animate-fade-in">
-          <div class="experience-card-header" data-toggle="collapse" data-target="experience-1">
-            <div class="experience-header-content">
-              <div class="experience-period">Nov 2022 – Jul 2024</div>
-              <h2 class="experience-position">Software Engineer II</h2>
-              <h3 class="experience-company">Akamai Technologies — DDoS mitigation, Network Security</h3>
-            </div>
-            <div class="card-toggle">
-              <i class="fas fa-chevron-down"></i>
+          <div class="experience-preview">
+            <img src="assets/images/akamai.jpg" alt="Akamai Technologies" class="experience-image">
+            <div class="experience-overlay">
+              <div class="experience-badge">Completed</div>
             </div>
           </div>
-          <div class="experience-card-body" id="experience-1">
+          <div class="experience-details">
+            <div class="experience-meta">
+              <span class="experience-category">Software Engineer II</span>
+              <span class="experience-date">Nov 2022 – Aug 2024</span>
+            </div>
+            <h3 class="experience-title">Akamai Technologies</h3>
+            <p class="experience-company">DDoS mitigation, Network Security</p>
             <p class="experience-description">Hired by Akamai Technologies, a global leader in API security, to develop features that prevent bot traffic on APIs.</p>
-            
-            <div class="experience-details">
-              <ul>
-                <li>Revamped "Crypto Challenge", a bot deterrence feature from a Django server to edge servers in C, restructured the framework for distributed handling, reduced server hops, doubling verification speed, and boosting customer adoption from 107 to 243.</li>
-                <li>Engineered "Adaptive Challenge," a stateless bot detection feature using JavaScript, Java, AngularJS and Akamai Metadata, integrated into 27 customer solutions and serving millions of users daily. (Patent filed for version 2)</li>
-                <li>Engineered the "Hype Event" feature using AngularJS, Java, Akamai metadata and Python, optimizing stability during peak loads with cookie-based state management for bot detection, reducing server load by 70 million requests/day.</li>
-                <li>Optimized memory usage per request by 14% (42KB to 36KB) by automating config delivery via Jenkins, analyzing execution logs in Amazon S3 with Python to track unused variables, and visualizing cleanup points using Grafana.</li>
-                <li>Developed and deployed Flask-based REST APIs on a Kubernetes cluster to monitor release impacts across 365,000 servers, integrating MySQL, OpenSSL, SSL/TLS, RBAC and multi-source data integration for real-time alerts, reducing release rollback time by 75%.</li>
-              </ul>
+            <ul class="experience-list">
+              <li>Revamped "Crypto Challenge", a bot deterrence feature from a Django server to edge servers in C, restructured the framework for distributed handling, reduced server hops, doubling verification speed, and boosting customer adoption from 107 to 243.</li>
+              <li>Engineered "Adaptive Challenge," a stateless bot detection feature using JavaScript, Java, AngularJS and Akamai Metadata, integrated into 27 customer solutions and serving millions of users daily. (Patent filed for version 2)</li>
+              <li>Engineered the "Hype Event" feature using AngularJS, Java, Akamai metadata and Python, optimizing stability during peak loads with cookie-based state management for bot detection, reducing server load by 70 million requests/day.</li>
+              <li>Optimized memory usage per request by 14% (42KB to 36KB) by automating config delivery via Jenkins, analyzing execution logs in Amazon S3 with Python to track unused variables, and visualizing cleanup points using Grafana.</li>
+              <li>Developed and deployed Flask-based REST APIs on a Kubernetes cluster to monitor release impacts across 365,000 servers, integrating MySQL, OpenSSL, SSL/TLS, RBAC and multi-source data integration for real-time alerts, reducing release rollback time by 75%.</li>
+            </ul>
+            <div class="experience-tech">
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">AngularJS</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Jenkins</span>
+              <span class="tech-tag">Amazon S3</span>
+              <span class="tech-tag">Grafana</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Kubernetes</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">OpenSSL</span>
+              <span class="tech-tag">SSL/TLS</span>
+              <span class="tech-tag">RBAC</span>
             </div>
-            
-            <div class="experience-tags">
-              <span class="experience-tag">C</span>
-              <span class="experience-tag">JavaScript</span>
-              <span class="experience-tag">Java</span>
-              <span class="experience-tag">AngularJS</span>
-              <span class="experience-tag">Python</span>
-              <span class="experience-tag">Jenkins</span>
-              <span class="experience-tag">Amazon S3</span>
-              <span class="experience-tag">Grafana</span>
-              <span class="experience-tag">Flask</span>
-              <span class="experience-tag">Kubernetes</span>
-              <span class="experience-tag">MySQL</span>
-              <span class="experience-tag">OpenSSL</span>
-              <span class="experience-tag">SSL/TLS</span>
-              <span class="experience-tag">RBAC</span>
-            </div>
+            <button class="show-more-btn">Show More</button>
           </div>
         </div>
         
+        <!-- Akamai Technologies - Software Engineer -->
         <div class="experience-card animate-fade-in">
-          <div class="experience-card-header" data-toggle="collapse" data-target="experience-2">
-            <div class="experience-header-content">
-              <div class="experience-period">Aug 2020 – Oct 2022</div>
-              <h2 class="experience-position">Software Engineer</h2>
-              <h3 class="experience-company">Akamai Technologies — Anomaly detection, Big data Analysis</h3>
-            </div>
-            <div class="card-toggle">
-              <i class="fas fa-chevron-down"></i>
+          <div class="experience-preview">
+            <img src="assets/images/sde.jpg" alt="Akamai Technologies" class="experience-image">
+            <div class="experience-overlay">
+              <div class="experience-badge">Completed</div>
             </div>
           </div>
-          <div class="experience-card-body" id="experience-2">
+          <div class="experience-details">
+            <div class="experience-meta">
+              <span class="experience-category">Software Engineer</span>
+              <span class="experience-date">Aug 2020 – Oct 2022</span>
+            </div>
+            <h3 class="experience-title">Akamai Technologies</h3>
+            <p class="experience-company">Anomaly detection, Big data Analysis</p>
             <p class="experience-description">Hired to build platforms for integrating log data and providing actionable insights to customers.</p>
-            
-            <div class="experience-details">
-              <ul>
-                <li>Deployed and managed a 70-node distributed database cluster on Azure for SLA tracking. Automated cluster provisioning, pipeline creation, database setup, and key management with Terraform, reducing manual effort by 95%.</li>
-                <li>Built data pipelines, optimized schemas, and created efficient views, automated ETL operations via Airflow and employed advanced SQL techniques resulting in a 30% improvement in BI system performance.</li>
-                <li>Implemented cluster monitoring with Prometheus and Grafana, tracking key metrics and triggering alerts.</li>
-                <li>Developed a secure Python-based application interface (Open API standards) over a Spark data warehouse, enabling advanced queries with ORM, incorporated OAuth 2.0 and JWT for secure user authentication and authorization.</li>
-              </ul>
+            <ul class="experience-list">
+              <li>Deployed and managed a 70-node distributed database cluster on Azure for SLA tracking. Automated cluster provisioning, pipeline creation, database setup, and key management with Terraform, reducing manual effort by 95%.</li>
+              <li>Built data pipelines, optimized schemas, and created efficient views, automated ETL operations via Airflow and employed advanced SQL techniques resulting in a 30% improvement in BI system performance.</li>
+              <li>Implemented cluster monitoring with Prometheus and Grafana, tracking key metrics and triggering alerts.</li>
+              <li>Developed a secure Python-based application interface (Open API standards) over a Spark data warehouse, enabling advanced queries with ORM, incorporated OAuth 2.0 and JWT for secure user authentication and authorization.</li>
+            </ul>
+            <div class="experience-tech">
+              <span class="tech-tag">Azure</span>
+              <span class="tech-tag">Terraform</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">ETL</span>
+              <span class="tech-tag">Airflow</span>
+              <span class="tech-tag">Prometheus</span>
+              <span class="tech-tag">Grafana</span>
+              <span class="tech-tag">Spark</span>
+              <span class="tech-tag">ORM</span>
+              <span class="tech-tag">OAuth 2.0</span>
+              <span class="tech-tag">JWT</span>
             </div>
-            
-            <div class="experience-tags">
-              <span class="experience-tag">Azure</span>
-              <span class="experience-tag">Terraform</span>
-              <span class="experience-tag">Python</span>
-              <span class="experience-tag">SQL</span>
-              <span class="experience-tag">ETL</span>
-              <span class="experience-tag">Airflow</span>
-              <span class="experience-tag">Prometheus</span>
-              <span class="experience-tag">Grafana</span>
-              <span class="experience-tag">Spark</span>
-              <span class="experience-tag">ORM</span>
-              <span class="experience-tag">OAuth 2.0</span>
-              <span class="experience-tag">JWT</span>
-            </div>
+            <button class="show-more-btn">Show More</button>
           </div>
         </div>
         
+        <!-- Parentof - Visual Data Analyst -->
         <div class="experience-card animate-fade-in">
-          <div class="experience-card-header" data-toggle="collapse" data-target="experience-3">
-            <div class="experience-header-content">
-              <div class="experience-period">Jul 2018 – May 2020</div>
-              <h2 class="experience-position">Software Engineer Intern</h2>
-              <h3 class="experience-company">CISCO — Network and Data Analytics</h3>
-            </div>
-            <div class="card-toggle">
-              <i class="fas fa-chevron-down"></i>
+          <div class="experience-preview">
+            <img src="assets/images/parentof.png" alt="Parentof" class="experience-image">
+            <div class="experience-overlay">
+              <div class="experience-badge">Completed</div>
             </div>
           </div>
-          <div class="experience-card-body" id="experience-3">
-            <p class="experience-description">Worked on developing network analytics tools and data processing pipelines.</p>
-            
-            <div class="experience-details">
-              <ul>
-                <li>Contributed to the development of dashboards for network traffic analysis using D3.js and Angular, improving visibility into network patterns and potential security threats.</li>
-                <li>Assisted in building data processing pipelines using Python and Apache Kafka for real-time network traffic analysis.</li>
-                <li>Helped optimize database queries, resulting in a 25% improvement in dashboard load times.</li>
-              </ul>
+          <div class="experience-details">
+            <div class="experience-meta">
+              <span class="experience-category">Visual Data Analyst</span>
+              <span class="experience-date">Feb 2017 – Apr 2017</span>
             </div>
-            
-            <div class="experience-tags">
-              <span class="experience-tag">D3.js</span>
-              <span class="experience-tag">Angular</span>
-              <span class="experience-tag">Python</span>
-              <span class="experience-tag">Apache Kafka</span>
-              <span class="experience-tag">SQL</span>
+            <h3 class="experience-title">Parentof</h3>
+            <p class="experience-company">Data Cleaning and Analysis</p>
+            <p class="experience-description">Focused on data cleaning, analysis, and preparation for machine learning model training.</p>
+            <ul class="experience-list">
+              <li>Performed comprehensive data cleaning on large datasets, handling missing values, outliers, and inconsistencies.</li>
+              <li>Conducted exploratory data analysis to identify patterns, trends, and potential data quality issues.</li>
+              <li>Prepared and transformed data for model training, ensuring proper formatting and feature engineering.</li>
+              <li>Created data validation pipelines to ensure the quality and consistency of training datasets.</li>
+            </ul>
+            <div class="experience-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Data Cleaning</span>
+              <span class="tech-tag">Data Analysis</span>
+              <span class="tech-tag">Data Preparation</span>
             </div>
+            <button class="show-more-btn">Show More</button>
           </div>
-        </div>
-      </div>
-      
-      <!-- Education Section -->
-      <div class="education-section">
-        <div class="section-header">
-          <h2>Education</h2>
-        </div>
-        
-        <div class="education-item animate-fade-in">
-          <h3>Bachelor of Engineering in Computer Science</h3>
-          <p>R.V. College of Engineering, Bangalore</p>
-          <p>GPA: 9.1/10.0</p>
-          <div class="education-period">2016 - 2020</div>
         </div>
       </div>
     </div>
@@ -509,5 +434,20 @@
   
   <!-- Scripts -->
   <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const showMoreButtons = document.querySelectorAll('.show-more-btn');
+      
+      showMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.experience-card');
+          const isExpanded = card.classList.contains('expanded');
+          
+          card.classList.toggle('expanded');
+          this.textContent = isExpanded ? 'Show More' : 'Show Less';
+        });
+      });
+    });
+  </script>
 </body>
 </html> 

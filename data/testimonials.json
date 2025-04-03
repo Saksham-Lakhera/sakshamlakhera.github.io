@@ -1,0 +1,105 @@
+{
+    "testimonials": [
+      {
+        "name": "Naresh Deversetti",
+        "role": "Engineering Manager",
+        "company": "Akamai Technologies",
+        "date": "October 18, 2024",
+        "testimonial": "Saksham joined our team at Akamai as a fresher and has quickly proven to be a great team player. He learns new concepts swiftly, articulates his thoughts well, and consistently thinks outside the box. His collaborative approach has made a significant impact on our team's dynamics.",
+        "linkedin": "https://linkedin.com/in/naresh-deversetti",
+        "image": "assets/images/testimonials/naresh_d.jpeg",
+        "priority": 1
+      },
+      {
+        "name": "Karthik Nanjaraju",
+        "role": "Senior Technical Program Manager",
+        "company": "Abbyy India",
+        "date": "October 8, 2024",
+        "testimonial": "Saksham stands out as one of the most competent software engineers I've worked with. He demonstrated a broad and deep understanding of complex systems and could solve hard technical problems. He brought a fresh vision and attention to detail, and contributed positively to team culture. His commitment to excellence and eagerness to learn are commendable. Highly recommended for any role requiring dedication, competence, and reliability.",
+        "linkedin": "https://linkedin.com/in/karthik-nanjaraju",
+        "image": "assets/images/testimonials/karthik_nanaraju.jpg",
+        "priority": 2
+      },
+      {
+        "name": "Ajanta Konar",
+        "role": "Principal R&D Engineer",
+        "company": "Synopsys",
+        "date": "October 22, 2024",
+        "testimonial": "I have worked with Saksham for a couple of years in Akamai, when he just joined the team as a fresher. I must say, it was a pleasure and quite a bit of surprise to see a fresher learning things so quickly, taking ownership of relatively big chunks of work and delivering them almost independently. He was very keen to learn, and even though there were complex workflows, he was self-motivated, learned quickly, and was on top of things within months. He surprised the team with innovative ideas in brainstorming sessions. His jovial and fun nature kept the team motivated during the pandemic. Overall, he is a great asset to any team and has the potential to reach great heights in his career.",
+        "linkedin": "https://linkedin.com/in/ajanta-konar",
+        "image": "assets/images/testimonials/default.png",
+        "priority": 3
+      },
+      {
+        "name": "Kai Peng",
+        "role": "Senior Software Engineer",
+        "company": "Akamai Technologies",
+        "date": "September 16, 2024",
+        "testimonial": "Had the pleasure of working with Saksham on a couple of projects. He is a critical thinker with excellent work ethic — the smart guy that gets it working!",
+        "linkedin": "https://linkedin.com/in/kai-peng",
+        "image": "assets/images/testimonials/kai_peng.jpeg",
+        "priority": 4
+      },
+      {
+        "name": "Jishnu Sankar",
+        "role": "Senior Software Engineer",
+        "company": "Akamai Technologies",
+        "date": "October 15, 2024",
+        "testimonial": "I had the pleasure of working with Saksham at Akamai. He is a skilled and dedicated professional who consistently delivers results. His ability to solve complex problems efficiently makes him a valuable team member. I highly recommend him for his technical expertise and work ethics.",
+        "linkedin": "https://linkedin.com/in/jishnu-sankar",
+        "image": "assets/images/testimonials/jisnu_s.jpeg",
+        "priority": 5
+      },
+      {
+        "name": "Koushik Mondal",
+        "role": "Senior Software Engineer",
+        "company": "Akamai Technologies",
+        "date": "July 9, 2024",
+        "testimonial": "I have been closely working with Saksham at Akamai. He is skilled and knowledgeable, consistently bringing great ideas that have improved the Botman product. Saksham is highly adaptable to challenges and completes his tasks swiftly. He takes great ownership of his work and is very collaborative, always maintaining a positive and happy environment within the team.",
+        "linkedin": "https://linkedin.com/in/koushik-mondal",
+        "image": "assets/images/testimonials/koushik_mondal.jpeg",
+        "priority": 6
+      },
+      {
+        "name": "Arjun Sahoo",
+        "role": "Data Engineer",
+        "company": "Akamai Technologies",
+        "date": "August 29, 2024",
+        "testimonial": "I had the pleasure of working with Saksham on a project where we implemented SingleStore database for KPI analysis. We managed a large SingleStore cluster that housed customer KPIs and developed a dashboard for customers to track their metrics. Saksham was fantastic to work with—always proactive and ready to jump in whenever needed. He made it easy to reach out for help and was always open to feedback, bringing fresh, innovative solutions when we hit roadblocks. Beyond his technical skills, Saksham brought a positive energy to the team and could always be relied on for important tasks. If you're looking for someone who's not just skilled but also a great team player, Saksham is your guy.",
+        "linkedin": "https://linkedin.com/in/arjun-sahoo",
+        "image": "assets/images/testimonials/arjun_sahoo.jpeg",
+        "priority": 7
+      },
+      {
+        "name": "Shreya De",
+        "role": "Senior SDET",
+        "company": "Akamai Technologies",
+        "date": "October 19, 2024",
+        "testimonial": "Saksham is an expert in his field. He has great knowledge about Big Data and Databases. As a teammate he is very supportive and helpful. His great presentation skills makes things easier to understand. Saksham would definitely be a plus for any team.",
+        "linkedin": "https://linkedin.com/in/shreya-de",
+        "image": "assets/images/testimonials/shreya_De.jpeg",
+        "priority": 8
+      },
+      {
+        "name": "Kiran Sk",
+        "role": "SDET",
+        "company": "Akamai Technologies",
+        "date": "July 10, 2024",
+        "testimonial": "I had the pleasure of working as an SDET for Saksham Lakhera on a highly complex Big Data project. Saksham demonstrated exceptional technical prowess by handling and implementing a high-capacity distributed database system. This system efficiently processed 4TB of logs daily and stored aggregated data for up to a year across 70 nodes, showcasing his ability to manage and optimize large-scale data infrastructures. Working with Saksham was a truly enjoyable experience. His collaborative approach, problem-solving skills, and dedication to excellence made the project successful and the work environment positive and productive. I highly recommend Saksham for any role that requires deep technical knowledge, innovative thinking, and a strong commitment to delivering high-quality results.",
+        "linkedin": "https://linkedin.com/in/kiran-sk",
+        "image": "assets/images/testimonials/kiran_sk.jpeg",
+        "priority": 9
+      },
+      {
+        "name": "Kinchit Jain",
+        "role": "QA Analyst",
+        "company": "Ex-Akamai, Ex-HP Inc.",
+        "date": "October 12, 2024",
+        "testimonial": "Saksham is an intelligent guy who is chilled out also. He looks the problem with his own perspective which refreshes the thought process. Besides this he pumps up energy in the team. I love to work with him. His concepts are clear and he runs the last mile to gain the knowledge. I wish him good luck for the future endeavours.",
+        "linkedin": "https://linkedin.com/in/kinchit-jain",
+        "image": "assets/images/testimonials/kinchit_jain.jpeg",
+        "priority": 10
+      }
+    ]
+  }
+  

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "exp-1",
+    "company": "Akamai Technologies",
+    "position": "Software Engineer",
+    "period": "2021 - Present",
+    "location": "Bangalore, India",
+    "description": "Working on bot detection and prevention systems, focusing on security and performance optimization.",
+    "image": "assets/images/experience/akamai.jpg",
+    "details": [
+      "Developed and maintained bot detection systems serving millions of requests daily",
+      "Implemented cryptographic challenge-response mechanisms for bot prevention",
+      "Optimized system performance through distributed processing across edge servers",
+      "Collaborated with security teams to identify and mitigate new bot attack patterns"
+    ],
+    "skills": [
+      "C",
+      "JavaScript",
+      "Java",
+      "Distributed Systems",
+      "Security",
+      "Performance Optimization"
+    ]
+  },
+  {
+    "id": "exp-2",
+    "company": "Microsoft",
+    "position": "Software Engineering Intern",
+    "period": "Summer 2020",
+    "location": "Hyderabad, India",
+    "description": "Worked on Azure cloud services, focusing on security and scalability.",
+    "image": "assets/images/experience/microsoft.jpg",
+    "details": [
+      "Developed security features for Azure cloud services",
+      "Implemented automated testing frameworks for security components",
+      "Collaborated with cross-functional teams on security best practices",
+      "Participated in code reviews and security audits"
+    ],
+    "skills": [
+      "Azure",
+      "C#",
+      "Security",
+      "Cloud Computing",
+      "Automated Testing"
+    ]
+  },
+  {
+    "id": "exp-3",
+    "company": "Google Summer of Code",
+    "position": "Open Source Contributor",
+    "period": "Summer 2019",
+    "location": "Remote",
+    "description": "Contributed to open-source projects under Google Summer of Code program.",
+    "image": "assets/images/experience/gsoc.jpg",
+    "details": [
+      "Developed new features for open-source security tools",
+      "Fixed bugs and improved documentation",
+      "Participated in community discussions and code reviews",
+      "Mentored new contributors"
+    ],
+    "skills": [
+      "Open Source",
+      "Python",
+      "Security Tools",
+      "Documentation",
+      "Community Engagement"
+    ]
+  }
+] 
